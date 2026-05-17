@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: tournaments
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: qa
+      DB_URL: ${DB_URL}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      MY_EMAIL: ${MY_EMAIL}
+      API_KEY: ${API_KEY}
+      API_CLOUDNAME: ${API_CLOUDNAME}
+      CLOUDINARY_KEY: ${CLOUDINARY_KEY}
+      API_SECRET: ${API_SECRET}
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
