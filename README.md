@@ -21,6 +21,8 @@ Organizers create a tournament by choosing a bracket size and entering player us
 
 ---
 
+![Architecture diagram](./tournament-diagram1.png)
+
 ## User Stories
 
 ### Authentication & Account Management
