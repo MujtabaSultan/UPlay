@@ -1,0 +1,254 @@
+{
+  "info": {
+    "name": "Ping Pong Tournament",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:8080" },
+    { "key": "token", "value": "" },
+    { "key": "tournament_id", "value": "" },
+    { "key": "match_id", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "1 — Login",
+      "item": [
+        {
+          "name": "Login as Sara (admin)",
+          "event": [{ "listen": "test", "script": { "exec": ["var jwt = pm.response.text().replace(/\"/g, ''); pm.collectionVariables.set('token', jwt);"] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/auth/users/login", "host": ["{{base_url}}"], "path": ["auth","users","login"] },
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"sara@example.com\",\n  \"password\": \"password123\"\n}" }
+          }
+        },
+        {
+          "name": "Login as Omar",
+          "event": [{ "listen": "test", "script": { "exec": ["var jwt = pm.response.text().replace(/\"/g, ''); pm.collectionVariables.set('token', jwt);"] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/auth/users/login", "host": ["{{base_url}}"], "path": ["auth","users","login"] },
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"omar@example.com\",\n  \"password\": \"password123\"\n}" }
+          }
+        },
+        {
+          "name": "Login as Lina",
+          "event": [{ "listen": "test", "script": { "exec": ["var jwt = pm.response.text().replace(/\"/g, ''); pm.collectionVariables.set('token', jwt);"] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/auth/users/login", "host": ["{{base_url}}"], "path": ["auth","users","login"] },
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"lina@example.com\",\n  \"password\": \"password123\"\n}" }
+          }
+        },
+        {
+          "name": "Login as Khalid",
+          "event": [{ "listen": "test", "script": { "exec": ["var jwt = pm.response.text().replace(/\"/g, ''); pm.collectionVariables.set('token', jwt);"] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/auth/users/login", "host": ["{{base_url}}"], "path": ["auth","users","login"] },
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"khalid@example.com\",\n  \"password\": \"password123\"\n}" }
+          }
+        },
+        {
+          "name": "Login as Nadia",
+          "event": [{ "listen": "test", "script": { "exec": ["var jwt = pm.response.text().replace(/\"/g, ''); pm.collectionVariables.set('token', jwt);"] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/auth/users/login", "host": ["{{base_url}}"], "path": ["auth","users","login"] },
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"nadia@example.com\",\n  \"password\": \"password123\"\n}" }
+          }
+        },
+        {
+          "name": "Login as Yusuf",
+          "event": [{ "listen": "test", "script": { "exec": ["var jwt = pm.response.text().replace(/\"/g, ''); pm.collectionVariables.set('token', jwt);"] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/auth/users/login", "host": ["{{base_url}}"], "path": ["auth","users","login"] },
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"yusuf@example.com\",\n  \"password\": \"password123\"\n}" }
+          }
+        },
+        {
+          "name": "Login as Rania",
+          "event": [{ "listen": "test", "script": { "exec": ["var jwt = pm.response.text().replace(/\"/g, ''); pm.collectionVariables.set('token', jwt);"] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/auth/users/login", "host": ["{{base_url}}"], "path": ["auth","users","login"] },
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"rania@example.com\",\n  \"password\": \"password123\"\n}" }
+          }
+        },
+        {
+          "name": "Login as Tarek",
+          "event": [{ "listen": "test", "script": { "exec": ["var jwt = pm.response.text().replace(/\"/g, ''); pm.collectionVariables.set('token', jwt);"] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/auth/users/login", "host": ["{{base_url}}"], "path": ["auth","users","login"] },
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"tarek@example.com\",\n  \"password\": \"password123\"\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2 — Tournaments",
+      "item": [
+        {
+          "name": "List All Tournaments",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/tournaments", "host": ["{{base_url}}"], "path": ["tournaments"] }
+          }
+        },
+        {
+          "name": "Create Tournament — 2 players (sara vs omar)",
+          "event": [{ "listen": "test", "script": { "exec": ["var j = pm.response.json(); pm.collectionVariables.set('tournament_id', j.id); if(j.activeMatchId) pm.collectionVariables.set('match_id', j.activeMatchId); console.log('T:'+j.id+' M:'+j.activeMatchId);"] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/tournaments", "host": ["{{base_url}}"], "path": ["tournaments"] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Quick Duel\",\n  \"size\": 2,\n  \"usernames\": [\"sara\", \"omar\"]\n}" }
+          }
+        },
+        {
+          "name": "Create Tournament — 4 players (sara, omar, lina, khalid)",
+          "event": [{ "listen": "test", "script": { "exec": ["var j = pm.response.json(); pm.collectionVariables.set('tournament_id', j.id); if(j.activeMatchId) pm.collectionVariables.set('match_id', j.activeMatchId); console.log('T:'+j.id+' M:'+j.activeMatchId);"] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/tournaments", "host": ["{{base_url}}"], "path": ["tournaments"] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Spring Open\",\n  \"size\": 4,\n  \"usernames\": [\"sara\", \"omar\", \"lina\", \"khalid\"]\n}" }
+          }
+        },
+        {
+          "name": "Create Tournament — 8 players (all seeded)",
+          "event": [{ "listen": "test", "script": { "exec": ["var j = pm.response.json(); pm.collectionVariables.set('tournament_id', j.id); if(j.activeMatchId) pm.collectionVariables.set('match_id', j.activeMatchId); console.log('T:'+j.id+' M:'+j.activeMatchId);"] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/tournaments", "host": ["{{base_url}}"], "path": ["tournaments"] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Grand Championship\",\n  \"size\": 8,\n  \"usernames\": [\"sara\", \"omar\", \"lina\", \"khalid\", \"nadia\", \"yusuf\", \"rania\", \"tarek\"]\n}" }
+          }
+        },
+        {
+          "name": "Get Tournament by ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/tournaments/{{tournament_id}}", "host": ["{{base_url}}"], "path": ["tournaments","{{tournament_id}}"] }
+          }
+        },
+        {
+          "name": "Delete Tournament",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/tournaments/{{tournament_id}}", "host": ["{{base_url}}"], "path": ["tournaments","{{tournament_id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3 — Score Active Match",
+      "description": "Win: first to 11 win by 2, OR 7-0. match_id auto-set on tournament creation.",
+      "item": [
+        {
+          "name": "P1 +1",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/matches/{{match_id}}/score", "host": ["{{base_url}}"], "path": ["matches","{{match_id}}","score"] },
+            "body": { "mode": "raw", "raw": "{\n  \"player\": \"PLAYER1\",\n  \"delta\": 1\n}" }
+          }
+        },
+        {
+          "name": "P1 -1",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/matches/{{match_id}}/score", "host": ["{{base_url}}"], "path": ["matches","{{match_id}}","score"] },
+            "body": { "mode": "raw", "raw": "{\n  \"player\": \"PLAYER1\",\n  \"delta\": -1\n}" }
+          }
+        },
+        {
+          "name": "P2 +1",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/matches/{{match_id}}/score", "host": ["{{base_url}}"], "path": ["matches","{{match_id}}","score"] },
+            "body": { "mode": "raw", "raw": "{\n  \"player\": \"PLAYER2\",\n  \"delta\": 1\n}" }
+          }
+        },
+        {
+          "name": "P2 -1",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/matches/{{match_id}}/score", "host": ["{{base_url}}"], "path": ["matches","{{match_id}}","score"] },
+            "body": { "mode": "raw", "raw": "{\n  \"player\": \"PLAYER2\",\n  \"delta\": -1\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4 — Profile & Account",
+      "item": [
+        {
+          "name": "Get My Profile",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/auth/users/profile", "host": ["{{base_url}}"], "path": ["auth","users","profile"] }
+          }
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/auth/users/profile", "host": ["{{base_url}}"], "path": ["auth","users","profile"] },
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Sara\",\n  \"lastName\": \"Noor\",\n  \"profileDescription\": \"Ping pong champion\"\n}" }
+          }
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/auth/users/change-password", "host": ["{{base_url}}"], "path": ["auth","users","change-password"] },
+            "body": { "mode": "raw", "raw": "{\n  \"oldPass\": \"password123\",\n  \"newPass\": \"newpassword456\"\n}" }
+          }
+        },
+        {
+          "name": "Upload Profile Image",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/auth/users/profile-image", "host": ["{{base_url}}"], "path": ["auth","users","profile-image"] },
+            "body": { "mode": "formdata", "formdata": [{ "key": "file", "type": "file", "src": "" }] }
+          }
+        },
+        {
+          "name": "Soft Delete Own Account",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/auth/users/delete", "host": ["{{base_url}}"], "path": ["auth","users","delete"] }
+          }
+        },
+        {
+          "name": "Admin Delete User by ID",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/auth/users/delete/2", "host": ["{{base_url}}"], "path": ["auth","users","delete","2"] }
+          }
+        }
+      ]
+    }
+  ]
+}
